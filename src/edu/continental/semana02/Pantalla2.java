@@ -13,7 +13,7 @@ public class Pantalla2 extends Activity implements android.view.View.OnClickList
 	EditText txttallaP;
 	EditText txtpeso;
 	Button btnprocesar;
-	
+	String masa;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,16 @@ public class Pantalla2 extends Activity implements android.view.View.OnClickList
 			Double peso =Double.parseDouble(txtpeso.getText().toString());
 			
 			Double imc =peso / (talla*talla);
+			if (imc<18.50)
+				masa="Infrapeso";
+			else if(imc>=18.50 && imc<=24.99)
+				masa="Normal";
+			else if(imc>=25 && imc<30)
+				masa="Sobrepeso";
+			else
+				masa="Obeso";
 			
-			Toast.makeText(this, "El resultado es: " +imc , Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "El resultado es: " +imc +" y su estado es: "+masa , Toast.LENGTH_SHORT).show();
 		}
 	}
 	
